@@ -15,7 +15,14 @@ class CreateKrossesTable extends Migration
     {
         Schema::create('krosses', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('autopart_name');
+            $table->bigInteger('manufacturer_id')->unsigned();
+            $table->string('autopart_numb_orig');
+            $table->string('autopart_numb_analog');
+            $table->softDeletes();
+            $table->foreign('manufacturer_id')->references('id')->on('manufacturers');
+            $table->index('autopart_numb_orig');
+            $table->index('autopart_numb_analog');
         });
     }
 

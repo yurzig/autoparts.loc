@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+$groupData = [
+    'namespace' => 'App\Http\Controllers\Shop',
+    'prefix' => 'shop',
+];
+Route::group($groupData, function () {
+    Route::resource('search', SearchController::class)
+        ->only(['index', 'store'])
+        ->names('shop.search');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
