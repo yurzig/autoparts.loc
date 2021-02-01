@@ -23,7 +23,7 @@ class CreateOurStoragesTable extends Migration
             $table->string('cell_numb');
             $table->decimal('purchase_price', 10, 2, true)->default(0);;
             $table->decimal('sales_price', 10, 2, true)->default(0);;
-            $table->integer('remains');
+            $table->integer('remains')->nullable()->default(0);
             $table->foreign('manufacturer_id')->references('id')->on('manufacturers');
         });
     }

@@ -17,7 +17,7 @@ class CreateManufacturersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('brand');
-            $table->text('description');
+            $table->text('description')->nullable();
         });
     }
 

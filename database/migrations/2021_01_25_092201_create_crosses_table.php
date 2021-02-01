@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKrossesTable extends Migration
+class CreateCrossesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateKrossesTable extends Migration
      */
     public function up()
     {
-        Schema::create('krosses', function (Blueprint $table) {
+        Schema::create('crosses', function (Blueprint $table) {
             $table->id();
             $table->string('autopart_name');
             $table->bigInteger('manufacturer_id')->unsigned();

@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\Shop;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller as GuestBaseController;
 
-class BaseController extends Controller
+abstract class BaseController extends GuestBaseController
 {
-    //
+    /**
+     * BaseController constructor
+     */
+    public function  __construct()
+    {
+
+    }
 }

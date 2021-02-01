@@ -22,10 +22,12 @@ $groupData = [
 ];
 Route::group($groupData, function () {
     Route::resource('search', SearchController::class)
-        ->only(['index', 'store'])
+        ->only(['index', 'edit'])
         ->names('shop.search');
 });
 
 Auth::routes();
 
+Route::post('/shop/searchcrosses', [App\Http\Controllers\Shop\SearchController::class, 'searchCrosses'])->name('shop.search.crosses');
+Route::get('shop/searchautopart/{numb}', [App\Http\Controllers\Shop\SearchController::class, 'searchAutopart'])->name('shop.search.autopart');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

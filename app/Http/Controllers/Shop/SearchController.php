@@ -2,18 +2,29 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Repositories\SearchRepository;
 use Illuminate\Http\Request;
 
 class SearchController extends BaseController
 {
     /**
+     * @var SearchRepository
+     */
+    private $searchRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->searchRepository = app(SearchRepository::class);
+    }
+    /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        dd('YESSSSSSSSSSSSSSSSS');
+        return view('search.search_by_numb');
     }
 
     /**
@@ -30,11 +41,23 @@ class SearchController extends BaseController
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     */
+    public function searchCrosses(Request $request)
+    {
+        $data = $request->input();
+        $crosses = $this->searchRepository->getCrosses($data['autopart_numb']);
+        return view('search.search_crosses', compact('crosses'));
     }
 
     /**
@@ -46,6 +69,15 @@ class SearchController extends BaseController
     public function show($id)
     {
         //
+    }/**
+     * Display the specified resource.
+     *
+     * @param  string  $numb
+     * @return \Illuminate\Http\Response
+     */
+    public function searchAutopart($numb)
+    {
+        dd(__METHOD__, $numb);
     }
 
     /**
@@ -56,7 +88,7 @@ class SearchController extends BaseController
      */
     public function edit($id)
     {
-        //
+        dd(__METHOD__);
     }
 
     /**
