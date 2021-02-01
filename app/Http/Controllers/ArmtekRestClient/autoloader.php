@@ -1,13 +1,13 @@
 <?php
 /**
 * Авто-загрузка.
-* 
+*
 * После регистрации этого автозагрузчика через SPL следующая строчка
 * заставит функцию попытаться загрузить класс \Foo\Bar\Baz\Qux
 * из файла /path/to/project/src/Baz/Qux.php:
-* 
+*
 *      new \Foo\Bar\Baz\Qux;
-*      
+*
 * @param string $class абсолютное имя класса.
 * @return void
 */
@@ -18,12 +18,13 @@ spl_autoload_register(function ($class) {
     $prefix = '';
 
     // базовая директория для этого префикса
-    $base_dir = __DIR__ . '/src/';
+    $base_dir = __DIR__;
 
     // класс использует префикс?
     $len = strlen($prefix);
     if (strncmp($prefix, $class, $len) !== 0) {
         // нет. Пусть попытается другой автозагрузчик
+        dd($base_dir, $relative_class);
         return;
     }
     // получаем относительное имя класса
@@ -32,7 +33,7 @@ spl_autoload_register(function ($class) {
     // заменяем префикс базовой директорией, заменяем разделители пространства имён
     // на разделители директорий в относительном имени класса, добавляем .php
     $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
-    
+
     // если файл существует, подключаем его
     if (file_exists($file)) {
         require $file;

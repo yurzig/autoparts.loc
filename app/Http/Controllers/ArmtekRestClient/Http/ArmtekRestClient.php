@@ -1,9 +1,9 @@
 <?php
 
-namespace ArmtekRestClient\Http;
+namespace App\Http\Controllers\ArmtekRestClient\Http;
 
-use \ArmtekRestClient\Http\Config;
-use \ArmtekRestClient\Http\Exception;
+use App\Http\Controllers\ArmtekRestClient\Http\Config;
+use App\Http\Controllers\ArmtekRestClient\Http\Exception;
 
 
 /**
@@ -15,17 +15,17 @@ class ArmtekRestClient
 {
     /**
     * ArmtekRestClient configuration
-    * 
+    *
     * @var null|object
     */
     private $_config = null;
-    
-    public function __construct(\ArmtekRestClient\Http\Config\Config $config)
+
+    public function __construct(\App\Http\Controllers\ArmtekRestClient\Http\Config\Config $config)
     {
-        $this->_config = $config;    
+        $this->_config = $config;
     }
-    
-    
+
+
     /**
     * @param string|array $request
     *
@@ -44,19 +44,19 @@ class ArmtekRestClient
     public function __call($method, $arguments)
     {
         $request_params = array_pop($arguments);
-        
+
         if (!is_array($request_params)) {
             $request_params = ['url' => $request_params];
         }
 
         if ($this->valid($request_params)) {
-        
+
             $request_params['method'] = Request::method($method);
             $this->request = $this->requestInstance($request_params);
-        
+
             return $this->request->send();
         }
-        
-        throw new \ArmtekRestClient\Http\Exception\ArmtekException('Ошибка! Запрос не может быть создан');
+
+        throw new \App\Http\Controllers\ArmtekRestClient\Http\Exception\ArmtekException('Ошибка! Запрос не может быть создан');
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace ArmtekRestClient\Http\Exception;
+namespace App\Http\Controllers\ArmtekRestClient\Http\Exception;
 
 /**
 * class ArmtekException
 */
 class ArmtekException extends \Exception
-{} 
+{}
 
 ?>

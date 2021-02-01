@@ -77,7 +77,12 @@ class SearchController extends BaseController
      */
     public function searchAutopart($numb)
     {
-        dd(__METHOD__, $numb);
+        $numb = 'oc47';
+        $brand = 'KNECHT';
+
+        $armtek = new APIArmtekController();
+        $parts = $armtek->search($numb, $brand);
+        dd(__METHOD__, $parts);
     }
 
     /**

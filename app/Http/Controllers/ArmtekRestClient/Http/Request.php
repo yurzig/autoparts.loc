@@ -1,9 +1,9 @@
 <?php
 
-namespace ArmtekRestClient\Http;
+namespace App\Http\Controllers\ArmtekRestClient\Http;
 
-use ArmtekRestClient\Http\Config;
-use ArmtekRestClient\Http\Contracts\RequestInterface;
+use App\Http\Controllers\ArmtekRestClient\Http\Config;
+use App\Http\Controllers\ArmtekRestClient\Http\Contracts\RequestInterface;
 
 /**
  * The HTTP Request.
@@ -14,11 +14,11 @@ class Request implements RequestInterface
 {
     /**
     * ArmtekRestClient\Http\Config
-    * 
+    *
     * @var mixed
     */
     private $_config = null;
-    
+
     /**
      * The default request schema.
      *
@@ -92,11 +92,11 @@ class Request implements RequestInterface
     /**
      * @param array $requestData
      */
-    public function __construct($requestData = array(), \ArmtekRestClient\Http\Config\Config $config)
+    public function __construct($requestData = array(), \App\Http\Controllers\ArmtekRestClient\Http\Config\Config $config)
     {
         // init general configuration
         $this -> _config = $config;
-        
+
         $data = array_merge($this->default, $requestData);
 
         $this->httpVersion = $data['version'];
@@ -120,7 +120,7 @@ class Request implements RequestInterface
      */
     public function send()
     {
-        
+
         $cURLOptions = array(
             CURLOPT_USERPWD         => $this -> _config -> getUserLogin() . ':' . $this -> _config -> getUserPassword(),
             CURLOPT_HTTP_VERSION    => $this->getCurlHttpVersion(),
@@ -156,7 +156,7 @@ class Request implements RequestInterface
         // initialize cURL
         $cURL = curl_init();
         curl_setopt_array($cURL, $cURLOptions);
-        
+
         return Response::make($cURL);
     }
 

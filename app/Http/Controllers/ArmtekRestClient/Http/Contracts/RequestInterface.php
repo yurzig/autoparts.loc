@@ -1,6 +1,6 @@
 <?php
 
-namespace ArmtekRestClient\Http\Contracts;
+namespace App\Http\Controllers\ArmtekRestClient\Http\Contracts;
 
 /**
  * The request interface

@@ -1,9 +1,9 @@
 <?php
 
-namespace ArmtekRestClient\Http;
+namespace App\Http\Controllers\ArmtekRestClient\Http;
 
-use ArmtekRestClient\Http\Contracts\ResponseInterface;
-use ArmtekRestClient\Http\Exception;
+use App\Http\Controllers\ArmtekRestClient\Http\Contracts\ResponseInterface;
+use App\Http\Controllers\ArmtekRestClient\Http\Exception;
 
 /**
  * The HTTP Response.
@@ -46,7 +46,7 @@ class Response implements ResponseInterface
             $this->headers = $this->parseHeaders($response, $this->info['header_size']);
             $this->content = $this->parseBody($response, $this->info['header_size']);
         } else {
-            throw new \ArmtekRestClient\Http\Exception\ArmtekException(curl_error($cURL));
+            throw new \App\Http\Controllers\ArmtekRestClient\Http\Exception\ArmtekException(curl_error($cURL));
         }
 
         curl_close($cURL);
