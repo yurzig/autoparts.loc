@@ -16,7 +16,7 @@ class CreateOurStoragesTable extends Migration
         Schema::create('our_storages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('manufacturer_id')->unsigned();
+            $table->string('brand')->nullable()->default('');
             $table->string('autopart_numb');
             $table->string('autopart_name');
             $table->smallInteger('storage_numb')->unsigned();
@@ -24,7 +24,6 @@ class CreateOurStoragesTable extends Migration
             $table->decimal('purchase_price', 10, 2, true)->default(0);;
             $table->decimal('sales_price', 10, 2, true)->default(0);;
             $table->integer('remains')->nullable()->default(0);
-            $table->foreign('manufacturer_id')->references('id')->on('manufacturers');
         });
     }
 

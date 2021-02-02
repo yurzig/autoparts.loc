@@ -18,13 +18,11 @@ class CrossesTableSeeder extends Seeder
 
         for ($i = 1; $i <= 10; $i++) {
             $autopart_name = 'Запчасть №' . $i;
-            $manufacturer_id = rand(1,10);
             $autopart_numb_orig = 'original'. $i;
             $autopart_numb_analog = 'analog'. rand(1,10);
 
             $items[] = [
                 'autopart_name' => $autopart_name ,
-                'manufacturer_id' => $manufacturer_id,
                 'autopart_numb_orig' => $autopart_numb_orig,
                 'autopart_numb_analog' => $autopart_numb_analog,
 

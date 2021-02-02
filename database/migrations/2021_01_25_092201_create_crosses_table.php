@@ -16,13 +16,10 @@ class CreateCrossesTable extends Migration
         Schema::create('crosses', function (Blueprint $table) {
             $table->id();
             $table->string('autopart_name');
-            $table->bigInteger('manufacturer_id')->unsigned();
+            $table->string('brand')->nullable()->default('');
             $table->string('autopart_numb_orig');
             $table->string('autopart_numb_analog');
             $table->softDeletes();
-            $table->foreign('manufacturer_id')->references('id')->on('manufacturers');
-            $table->index('autopart_numb_orig');
-            $table->index('autopart_numb_analog');
         });
     }
 

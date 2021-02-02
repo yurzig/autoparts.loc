@@ -21,7 +21,7 @@
                                     <tr @if(!$cross->autopart_numb_analog ) style="background-color:#ccc;" @endif>
                                         <td><a href="{{ route('shop.search.autopart', ['numb' => $cross->id]) }}">
                                                 {{ $cross->autopart_name }}</a></td>
-                                        <td>{{ $cross->manufacturer_id }}</td>
+                                        <td>{{ $cross->brand }}</td>
                                         <td>{{ $cross->autopart_numb_orig }}</td>
                                         <td>{{ $cross->autopart_numb_analog }}</td>
                                     </tr>

@@ -23,7 +23,7 @@ class SearchRepository extends CoreRepository
         $columns = [
           'id',
           'autopart_name',
-          'manufacturer_id',
+          'brand',
           'autopart_numb_orig',
           'autopart_numb_analog',
         ];

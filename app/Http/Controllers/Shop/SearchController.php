@@ -69,11 +69,13 @@ class SearchController extends BaseController
     public function show($id)
     {
         //
-    }/**
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  string  $numb
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function searchAutopart($numb)
     {
@@ -82,7 +84,8 @@ class SearchController extends BaseController
 
         $armtek = new APIArmtekController();
         $parts = $armtek->search($numb, $brand);
-        dd(__METHOD__, $parts);
+        $partsList = $parts->RESP;
+        return view('search.search_list', compact('partsList'));
     }
 
     /**
