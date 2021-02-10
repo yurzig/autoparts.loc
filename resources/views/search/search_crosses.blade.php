@@ -17,9 +17,10 @@
                             </thead>
                             <tbody>
                                 @php /** @var \App\Models\Cross $crosses */ @endphp
+                                @csrf
                                 @foreach($crosses as $cross)
                                     <tr @if(!$cross->autopart_numb_analog ) style="background-color:#ccc;" @endif>
-                                        <td><a href="{{ route('shop.search.autopart', ['numb' => $cross->id]) }}">
+                                        <td><a href="{{ route('shop.search.autopart', ['numb' => urlencode($cross->autopart_numb_orig), 'brand' => urlencode($cross->brand)]) }}">
                                                 {{ $cross->autopart_name }}</a></td>
                                         <td>{{ $cross->brand }}</td>
                                         <td>{{ $cross->autopart_numb_orig }}</td>

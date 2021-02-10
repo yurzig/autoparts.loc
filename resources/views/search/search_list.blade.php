@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <h1>Список</h1>
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-hover">
@@ -21,15 +22,15 @@
                             </thead>
                             <tbody>
                                 @foreach($partsList as $part)
-                                    <tr @if($part->ANALOG != 'X') style="background-color:#CDFFBD;" @endif>
-                                        <td>{{ $part->BRAND }}</td>
-                                        <td>{{ $part->PIN }}</td>
-                                        <td>{{ $part->NAME }}</td>
-                                        <td></td>
-                                        <td>{{ $part->PRICE }}</td>
-                                        <td>{{ $part->RVALUE }}</td>
-                                        <td>{{ $part->RETDAYS }}</td>
-                                        <td>Корзина</td>
+                                    <tr @if($part->analog != 'X') style="background-color:#CDFFBD;" @endif>
+                                        <td>{{ $part->brand }}</td>
+                                        <td>{{ $part->pin }}</td>
+                                        <td>{{ $part->name }}</td>
+                                        <td>{{ $part->storage }}</td>
+                                        <td>{{ $part->price }}</td>
+                                        <td>{{ $part->rvalue }}</td>
+                                        <td>{{ $part->retdays }}</td>
+                                        <td><button type="button" class="btn btn-success">Корзина</button></td>
                                     </tr>
                                 @endforeach
                             </tbody>
